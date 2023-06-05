@@ -1,0 +1,86 @@
+@font-face {
+    font-family: Evogria;
+    src: url('fonts/Evogria.otf');
+}
+@font-face {
+    font-family: Sofia;
+    src: url('fonts/Sofia.otf');
+    font-display: swap;
+}
+@font-face {
+    font-family: Blanch;
+    src: url('fonts/Blanch.otf');
+    font-display: swap;
+}
+@font-face {
+    font-family: KaushanScript;
+    src: url('fonts/KaushanScript.otf');
+}
+@font-face {
+    font-family: ConfigCondensed;
+    src: url('fonts/ConfigCondensed.otf');
+}
+
+:root {
+    --light-color: #404040ff;
+    --dark-color: #262626ff;
+}
+
+*,*:focus,*:hover{
+    outline:none;
+}
+
+html {
+    scrollbar-width: thin;
+}
+
+body {
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-right: 0;
+    margin-left: 0;
+    background-color: var(--light-color);
+}
+
+/* HEADER */
+
+#header {
+    background-color: var(--dark-color);
+    font-family: Sofia;
+    color: white;
+    text-align: center;
+    padding-bottom: 7px;
+    font-size: 50px;
+}
+
+/* TOP AND BOTTOM RIBBONS */
+
+#top-ribbon {
+    position: relative;
+    text-align: center;
+    color: var(--light-color);
+    font-family: Sofia;
+    font-size: 22px;
+}
+
+.ribbon-img {
+    display: block;
+    margin-top: 35px;
+    margin-right: auto;
+    margin-left: auto;
+    height: 35px;
+}
+
+.ribbon-txt {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: Sofia;
+    color: var(--light-color);
+    text-decoration: none;
+}
+
+#content {
+    margin-bottom: 120px;
+}
