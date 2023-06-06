@@ -16,9 +16,9 @@
 
 			header("Location: login.php");
 			die();
-		} else {
-			echo "Please enter some valid information!";
 		}
+        $em = "Invalid information";
+        header("Location: signup.php?error=$em");
 	}
 ?>
 
@@ -38,8 +38,22 @@
         <span class="ribbon-txt">Please sign-up</span>
     </div>
 
+    <div class="nav-bar">
+        <a class="nav-button" href="index.php">
+            <img class="nav-icon" src="imgs/home.png">
+            <div class="nav-text">Home page</div>
+        </a>
+    </div> 
+
     <div id="page">
         <form method="post">
+            <?php
+                if (isset($_GET['error'])) {
+                    echo '<p>';
+                    echo $_GET['error'];
+                    echo '</p>';
+                }
+            ?>
             <p> Enter your username:</br>
                 <input type="text" name="user"/> 
             </p>

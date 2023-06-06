@@ -30,7 +30,7 @@
     
     <div id="top-ribbon">
         <img class="ribbon-img" src="imgs/ribbon.png">
-        <span class="ribbon-txt">Welcome<?
+        <span class="ribbon-txt">Welcome<?php
                 if (isset($user_data)) {
                     echo ' ';
                     echo $user_data['user_name'];

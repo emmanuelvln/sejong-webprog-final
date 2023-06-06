@@ -8,6 +8,8 @@
         $user = $_POST['user'];
         $pass = $_POST['pass'];
 
+        $em = "Wrong username or password!";
+
         if (!empty($user) && !empty($pass) && !is_numeric($user)) {
             $query = "SELECT * FROM users WHERE user_name = '$user' LIMIT 1";
             $result = mysqli_query($con, $query);
@@ -24,10 +26,8 @@
                     }
                 }
             }
-            echo "wrong username or password! 2";
-        } else {
-            echo "wrong username or password! 1";
         }
+        header("Location: login.php?error=$em");
     }
 ?>
 
@@ -47,8 +47,22 @@
         <span class="ribbon-txt">Please log-in</span>
     </div>
 
+    <div class="nav-bar">
+        <a class="nav-button" href="index.php">
+            <img class="nav-icon" src="imgs/home.png">
+            <div class="nav-text">Home page</div>
+        </a>
+    </div>
+
     <div id="page">
         <form method="post">
+            <?php
+                if (isset($_GET['error'])) {
+                    echo '<p>';
+                    echo $_GET['error'];
+                    echo '</p>';
+                }
+            ?>
             <p> Enter your username:</br>
                 <input type="text" name="user"/> 
             </p>
@@ -59,7 +73,7 @@
                 <input type="submit" name="submit" value="Submit"/> 
             </p>
             <a href="signup.php">Signup</a>
-    </form>
+        </form>
     </div>
 </body>
 </html>
