@@ -7,14 +7,17 @@
     $user_data = check_login($con);
 
     if (isset($_POST['submit']) && isset($_FILES['my_image'])) {
-	    include "connection.php";
-
-    	echo "<pre>";
-	    print_r($_FILES['my_image']);
-	    echo "</pre>";
 
         $title = $_POST['title'];
         $location = $_POST['location'];
+
+        if ($title === "") {
+            $title = "Untitled";
+        }
+        if ($location === "") {
+            $location = "Unknown location";
+        }
+
 	    $img_name = $_FILES['my_image']['name'];
 	    $img_size = $_FILES['my_image']['size'];
 	    $tmp_name = $_FILES['my_image']['tmp_name'];
@@ -22,7 +25,7 @@
 
     	if ($error === 0) {
 		    if ($img_size > 500000) {
-			    $em = "Sorry, your file is too large.";
+			    $em = "File is too large";
 		        header("Location: upload.php?error=$em");
 		    } else {
 			    $img_ex = pathinfo($img_name, PATHINFO_EXTENSION);
@@ -39,17 +42,18 @@
 				    mysqli_query($con, $sql);
 				    header("Location: index.php");
 			    } else {
-				    $em = "You can't upload files of this type";
+				    $em = "Image is not of the right type";
 		            header("Location: upload.php?error=$em");
 			    }
 		    }
 	    } else {
-		    $em = "unknown error occurred!";
+		    $em = "Invalid inputs";
 		    header("Location: upload.php?error=$em");
 	    }
 
     } else {
-	    header("Location: upload.php?error=1");
+		$em = "Invalid inputs";
+		header("Location: upload.php?error=$em");
     }
 
 ?>

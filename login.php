@@ -63,7 +63,7 @@
                     echo '</p>';
                 }
             ?>
-            <p> Enter your username:</br>
+            <p>Enter your username:</br>
                 <input type="text" name="user"/> 
             </p>
             <p>Enter your password:</br>

@@ -1,0 +1,146 @@
+@font-face {
+    font-family: Evogria;
+    src: url('fonts/Evogria.otf');
+}
+@font-face {
+    font-family: Sofia;
+    src: url('fonts/Sofia.otf');
+    font-display: swap;
+}
+@font-face {
+    font-family: Blanch;
+    src: url('fonts/Blanch.otf');
+    font-display: swap;
+}
+@font-face {
+    font-family: KaushanScript;
+    src: url('fonts/KaushanScript.otf');
+}
+@font-face {
+    font-family: ConfigCondensed;
+    src: url('fonts/ConfigCondensed.otf');
+}
+
+:root {
+    --light-color: #404040ff;
+    --dark-color: #262626ff;
+}
+
+*,*:focus,*:hover{
+    outline:none;
+}
+
+html {
+    scrollbar-width: thin;
+}
+
+body {
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-right: 0;
+    margin-left: 0;
+    background-color: var(--light-color);
+}
+
+/* HEADER */
+
+#header {
+    background-color: var(--dark-color);
+    font-family: Sofia;
+    color: white;
+    text-align: center;
+    padding-bottom: 7px;
+    font-size: 50px;
+}
+
+/* TOP AND BOTTOM RIBBONS */
+
+#top-ribbon {
+    position: relative;
+    text-align: center;
+    color: var(--light-color);
+    font-family: Sofia;
+    font-size: 22px;
+}
+
+.ribbon-img {
+    display: block;
+    margin-top: 35px;
+    margin-right: auto;
+    margin-left: auto;
+    height: 35px;
+}
+
+.ribbon-txt {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: Sofia;
+    color: var(--light-color);
+    text-decoration: none;
+}
+
+.nav-bar {
+    width: 100%;
+    margin-top: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-button {
+    display: flex;
+    align-items: center;
+    height: 35px;
+    width: 175px;
+    background-color: white;
+    border-radius: 20px;
+    text-decoration: none;
+    margin: 10px;
+}
+
+.nav-icon {
+    height: 35px;
+    padding-left: 15px;
+}
+
+.nav-text {
+    color: var(--light-color);
+    font-family: ConfigCondensed;
+    font-size: 25px;
+    font-weight: bold;
+    padding-left: 10px;
+}
+
+form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: white;
+    margin-top: 35px;
+    padding: 15px;
+    border-radius: 20px;
+    width: 30%;
+
+    font-family: ConfigCondensed;
+    color: var(--dark-color);
+    font-size: 20px;
+}
+
+form input {
+    border-radius: 5px;
+}
+
+form a {
+    color: var(--dark-color);
+}
+
+#page {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}

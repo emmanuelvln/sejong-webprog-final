@@ -21,7 +21,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="index.css">
-    <title>Korean journey - index</title>
+    <title>Korean journey - home</title>
     <script>
     </script>
 </head>
@@ -53,13 +53,13 @@
                         <img class="nav-icon" src="imgs/logout.png">
                         <div class="nav-text">Sign out</div>
                     </a>
+                    <a class="nav-button" href="upload.php">
+                        <img class="nav-icon" src="imgs/upload.png">
+                        <div class="nav-text">Upload</div>
+                    </a>
                 HTML;
             }
         ?>
-        <a class="nav-button" href="upload.php">
-            <img class="nav-icon" src="imgs/upload.png">
-            <div class="nav-text">Upload</div>
-        </a>
     </div> 
 
     <div id="content">

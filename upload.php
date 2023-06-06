@@ -7,35 +7,52 @@
     $user_data = check_login($con);
 ?>
 
-<html>
+<html lang="en">
 <head>
-	<title>Image Upload Using PHP</title>
-	<style>
-		body {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			flex-direction: column;
-			min-height: 100vh;
-		}
-	</style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="upload.css">
+	<title>Korean journey - upload</title>
 </head>
 <body>
-	<?php if (isset($_GET['error'])): ?>
-		<p><?php echo $_GET['error']; ?></p>
-	<?php endif ?>
-     <form action="transfer.php"
-           method="post"
-           enctype="multipart/form-data">
+    <div id="header">Korean journey</div>
 
-            <input type="text" name="title"/> 
+    <div id="top-ribbon">
+        <img class="ribbon-img" src="imgs/ribbon.png">
+        <span class="ribbon-txt">Upload a new image</span>
+    </div>
 
-            <input type="text" name="location"/> 
+    <div class="nav-bar">
+        <a class="nav-button" href="index.php">
+            <img class="nav-icon" src="imgs/home.png">
+            <div class="nav-text">Home page</div>
+        </a>
+    </div> 
 
-            <input type="file" name="my_image"/>
+    <div id="page">
+        <form method="post" action="transfer.php" enctype="multipart/form-data">
+                <?php
+                    if (isset($_GET['error'])) {
+                        echo '<p>';
+                        echo $_GET['error'];
+                        echo '</p>';
+                    }
+                ?>
+                <p>Enter a title:
+                    <input type="text" name="title"/> 
+                </p>
 
-            <input type="submit" name="submit" value="Upload"/>
-     	
-     </form>
+                <p>Enter a location:
+                    <input type="text" name="location"/> 
+                </p>
+
+                <p>Upload an image:
+                    <input type="file" name="my_image"/>
+                </p>
+
+                <input type="submit" name="submit" value="Upload"/>
+        </form>
+    </div>
 </body>
 </html>
