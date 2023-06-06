@@ -1,49 +1,55 @@
 <?php 
+    session_start();
 
-if (isset($_POST['submit']) && isset($_FILES['my_image'])) {
-	include "connection.php";
+    include("connection.php");
+    include("functions.php");
 
-	echo "<pre>";
-	print_r($_FILES['my_image']);
-	echo "</pre>";
+    $user_data = check_login($con);
 
-	$img_name = $_FILES['my_image']['name'];
-	$img_size = $_FILES['my_image']['size'];
-	$tmp_name = $_FILES['my_image']['tmp_name'];
-	$error = $_FILES['my_image']['error'];
+    if (isset($_POST['submit']) && isset($_FILES['my_image'])) {
+	    include "connection.php";
 
-	if ($error === 0) {
-		if ($img_size > 200000) {
-			$em = "Sorry, your file is too large.";
-		    header("Location: upload.php?error=$em");
-		}else {
-			$img_ex = pathinfo($img_name, PATHINFO_EXTENSION);
-			$img_ex_lc = strtolower($img_ex);
+    	echo "<pre>";
+	    print_r($_FILES['my_image']);
+	    echo "</pre>";
 
-			$allowed_exs = array("jpg", "jpeg", "png"); 
+        $title = $_POST['title'];
+        $location = $_POST['location'];
+	    $img_name = $_FILES['my_image']['name'];
+	    $img_size = $_FILES['my_image']['size'];
+	    $tmp_name = $_FILES['my_image']['tmp_name'];
+	    $error = $_FILES['my_image']['error'];
 
-			if (in_array($img_ex_lc, $allowed_exs)) {
-				$new_img_name = uniqid("IMG-", true).'.'.$img_ex_lc;
-				$img_upload_path = 'uploads/'.$new_img_name;
-				move_uploaded_file($tmp_name, $img_upload_path);
-
-				// Insert into Database
-				$sql = "INSERT INTO content(url) 
-				        VALUES('$new_img_name')";
-				mysqli_query($con, $sql);
-				header("Location: view.php");
-			}else {
-				$em = "You can't upload files of this type";
+    	if ($error === 0) {
+		    if ($img_size > 500000) {
+			    $em = "Sorry, your file is too large.";
 		        header("Location: upload.php?error=$em");
-			}
-		}
-	}else {
-		$em = "unknown error occurred!";
-		header("Location: upload.php?error=$em");
-	}
+		    } else {
+			    $img_ex = pathinfo($img_name, PATHINFO_EXTENSION);
+			    $img_ex_lc = strtolower($img_ex);
 
-}else {
-	header("Location: upload.php?error=1");
-}
+    			$allowed_exs = array("jpg", "jpeg", "png"); 
+
+    			if (in_array($img_ex_lc, $allowed_exs)) {
+				    $new_img_name = uniqid("IMG-", true).'.'.$img_ex_lc;
+				    $img_upload_path = 'uploads/'.$new_img_name;
+				    move_uploaded_file($tmp_name, $img_upload_path);
+                    $user_name = $user_data['user_name'];
+				    $sql = "INSERT INTO content (url, title, location, user) VALUES ('$new_img_name', '$title', '$location', '$user_name')";
+				    mysqli_query($con, $sql);
+				    header("Location: index.php");
+			    } else {
+				    $em = "You can't upload files of this type";
+		            header("Location: upload.php?error=$em");
+			    }
+		    }
+	    } else {
+		    $em = "unknown error occurred!";
+		    header("Location: upload.php?error=$em");
+	    }
+
+    } else {
+	    header("Location: upload.php?error=1");
+    }
 
 ?>

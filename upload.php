@@ -1,3 +1,12 @@
+<?php
+    session_start();
+
+    include("connection.php");
+    include("functions.php");
+
+    $user_data = check_login($con);
+?>
+
 <html>
 <head>
 	<title>Image Upload Using PHP</title>
@@ -19,12 +28,13 @@
            method="post"
            enctype="multipart/form-data">
 
-           <input type="file" 
-                  name="my_image">
+            <input type="text" name="title"/> 
 
-           <input type="submit" 
-                  name="submit"
-                  value="Upload">
+            <input type="text" name="location"/> 
+
+            <input type="file" name="my_image"/>
+
+            <input type="submit" name="submit" value="Upload"/>
      	
      </form>
 </body>

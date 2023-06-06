@@ -9,7 +9,7 @@
 		$pass = $_POST['pass'];
 
 		if (!empty($user) && !empty($pass) && !is_numeric($user)) {
-			$user_id = random_num(20);
+			$user_id = random_num(5);
 			$query = "insert into users (user_id, user_name, password) values ('$user_id', '$user', '$pass')";
 
 			mysqli_query($con, $query);

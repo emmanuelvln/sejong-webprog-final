@@ -82,5 +82,77 @@ body {
 }
 
 #content {
-    margin-bottom: 120px;
+    display: grid;
+
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 50px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 50px;
+
+    grid-gap: 30px 10px;
+
+    grid-template-columns: repeat(auto-fit, 248px);
+    grid-auto-rows: 302px;
+}
+
+.frame {
+    height: 215px;
+    width: 215px;
+    overflow: hidden;
+    position: relative;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.description {
+    width: 215px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.card {
+    height: 300px;
+    width: 250px;
+    background-color: white;
+    padding-top: 15px;
+}
+
+.image {
+    width: 215px;
+}
+
+.nav-bar {
+    width: 500px;
+    margin-top: 35px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-button {
+    display: flex;
+    align-items: center;
+    height: 35px;
+    width: 175px;
+    background-color: white;
+    border-radius: 20px;
+    text-decoration: none;
+    margin: 10px;
+}
+
+.nav-icon {
+    height: 35px;
+    padding-left: 15px;
+}
+
+.nav-text {
+    color: var(--light-color);
+    font-family: ConfigCondensed;
+    font-size: 25px;
+    font-weight: bold;
+    padding-left: 10px;
 }
