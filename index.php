@@ -5,28 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="index.css">
-    <title>Korean travel - index</title>
+    <title>Korean journey - index</title>
 
     <?php
         session_start();
 
-        $_SESSION['username'] = $_POST['user'];
-        $_SESSION['userpass'] = $_POST['pass'];
-        $_SESSION['authuser'] = 1;
+        include("connection.php");
+        include("functions.php");
 
-        if (!isset($_SESSION['username'])) {
-            header('Location: login.php');
-            die();
-        }
+        $user_data = check_login($con);
     ?>
 </head>
 <body>
-    <div id="header">Korean travel</div>
+    <div id="header">Korean journey</div>
+    
+    <div id="top-ribbon">
+        <img class="ribbon-img" src="imgs/ribbon.png">
+        <span class="ribbon-txt">Welcome <?php echo $user_data['user_name']; ?>!</span>
+    </div>
 
-    <?php
-        echo '<div id="top-ribbon"><img class="ribbon-img" src="imgs/ribbon.png"><a class="ribbon-txt">Welcome ';
-        echo $_SESSION['username'];
-        echo '!</a></div>';
-    ?>
+    <a href="logout.php">Logout</a>
 </body>
 </html>
