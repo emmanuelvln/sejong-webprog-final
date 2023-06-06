@@ -1,3 +1,20 @@
+<?php
+    session_start();
+
+    include("connection.php");
+    include("functions.php");
+
+	if (isset($_SESSION['user_id'])) {
+		$id = $_SESSION['user_id'];
+		$query = "SELECT * FROM users WHERE user_id = '$id' LIMIT 1";
+
+        $result = mysqli_query($con, $query);
+		if ($result && mysqli_num_rows($result) > 0) {
+			$user_data = mysqli_fetch_assoc($result);
+		}
+	}
+?>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -5,29 +22,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="index.css">
     <title>Korean journey - index</title>
-
-    <?php
-        session_start();
-
-        include("connection.php");
-        include("functions.php");
-
-        $user_data = check_login($con);
-    ?>
+    <script>
+    </script>
 </head>
-<body>
+<body onload="load()">
     <div id="header">Korean journey</div>
     
     <div id="top-ribbon">
         <img class="ribbon-img" src="imgs/ribbon.png">
-        <span class="ribbon-txt">Welcome <?php echo $user_data['user_name']; ?>!</span>
+        <span class="ribbon-txt">Welcome<?
+                if (isset($user_data)) {
+                    echo ' ';
+                    echo $user_data['user_name'];
+                }
+            ?>!</span>
     </div>
 
     <div class="nav-bar">
-        <a class="nav-button" href="logout.php">
-            <img class="nav-icon" src="imgs/logout.png">
-            <div class="nav-text">Sign out</div>
-        </a>
+        <?php
+            if (!isset($user_data)) {
+                echo <<<HTML
+                        <a class="nav-button" href="login.php">
+                            <img class="nav-icon" src="imgs/logout.png">
+                            <div class="nav-text">Log in</div>
+                        </a>
+                    HTML;
+            } else {
+                echo <<<HTML
+                    <a class="nav-button" href="logout.php">
+                        <img class="nav-icon" src="imgs/logout.png">
+                        <div class="nav-text">Sign out</div>
+                    </a>
+                HTML;
+            }
+        ?>
         <a class="nav-button" href="upload.php">
             <img class="nav-icon" src="imgs/upload.png">
             <div class="nav-text">Upload</div>

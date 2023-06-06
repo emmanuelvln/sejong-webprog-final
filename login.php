@@ -9,7 +9,7 @@
         $pass = $_POST['pass'];
 
         if (!empty($user) && !empty($pass) && !is_numeric($user)) {
-            $query = "select * from users where user_name = '$user' limit 1";
+            $query = "SELECT * FROM users WHERE user_name = '$user' LIMIT 1";
             $result = mysqli_query($con, $query);
 
             if ($result) {
@@ -36,20 +36,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="login.css">
     <title>Korean journey - login</title>
 </head>
 <body>
-    <form method="post">
-        <p> Enter your username:
-            <input type="text" name="user"/> 
-        </p>
-        <p> Enter your password:
-            <input type="password" name="pass"/> 
-        </p>
-        <p>
-            <input type="submit" name="submit" value="Submit"/> 
-        </p>
-        <a href="signup.php">Signup</a>
+    <div id="header">Korean journey</div>
+
+    <div id="top-ribbon">
+        <img class="ribbon-img" src="imgs/ribbon.png">
+        <span class="ribbon-txt">Please log-in</span>
+    </div>
+
+    <div id="page">
+        <form method="post">
+            <p> Enter your username:</br>
+                <input type="text" name="user"/> 
+            </p>
+            <p>Enter your password:</br>
+                <input type="password" name="pass"/> 
+            </p>
+            <p>
+                <input type="submit" name="submit" value="Submit"/> 
+            </p>
+            <a href="signup.php">Signup</a>
     </form>
+    </div>
 </body>
 </html>
