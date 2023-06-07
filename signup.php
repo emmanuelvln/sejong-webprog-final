@@ -9,18 +9,28 @@
 		$user = $_POST['user'];
 		$pass = $_POST['pass'];
 
-		if (!empty($user) && !empty($pass) && !is_numeric($user)) {
-			$user_id = random_num();
-            $pass = password_hash($pass, PASSWORD_DEFAULT);
-			$query = "INSERT INTO users (user_id, user_name, password, email) VALUES ('$user_id', '$user', '$pass', '$email')";
+        $query = "SELECT email FROM users WHERE email = '$email'";
+        if (mysqli_num_rows(mysqli_query($con, $query))) {
+            $em = "This email is already in use";
+            header("Location: signup.php?error=$em");
+            die();
+        }
 
-			mysqli_query($con, $query);
+        $query = "SELECT user_name FROM users WHERE user_name = '$user'";
+        if (mysqli_num_rows(mysqli_query($con, $query))) {
+            $em = "This user name is already in use";
+            header("Location: signup.php?error=$em");
+            die();
+        }
 
-			header("Location: login.php");
-			die();
-		}
-        $em = "Invalid information";
-        header("Location: signup.php?error=$em");
+		$user_id = random_num();
+        $pass = password_hash($pass, PASSWORD_DEFAULT);
+		$query = "INSERT INTO users (user_id, user_name, password, email) VALUES ('$user_id', '$user', '$pass', '$email')";
+
+		mysqli_query($con, $query);
+
+        header("Location: login.php");
+		die();
 	}
 ?>
 

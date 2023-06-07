@@ -38,7 +38,8 @@
 				    $img_upload_path = 'uploads/'.$new_img_name;
 				    move_uploaded_file($tmp_name, $img_upload_path);
                     $user_name = $user_data['user_name'];
-				    $sql = "INSERT INTO content (url, title, location, user) VALUES ('$new_img_name', '$title', '$location', '$user_name')";
+                    $user_id = $user_data['user_id'];
+				    $sql = "INSERT INTO content (url, title, location, user, user_id) VALUES ('$new_img_name', '$title', '$location', '$user_name', '$user_id')";
 				    mysqli_query($con, $sql);
 				    header("Location: index.php");
 			    } else {

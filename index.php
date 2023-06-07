@@ -57,6 +57,10 @@
                         <img class="nav-icon" src="imgs/upload.png">
                         <div class="nav-text">Upload</div>
                     </a>
+                    <a class="nav-button" href="profile.php">
+                        <img class="nav-icon" src="imgs/profile.png">
+                        <div class="nav-text">Profile</div>
+                    </a>
                 HTML;
             }
         ?>

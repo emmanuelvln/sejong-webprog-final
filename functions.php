@@ -22,7 +22,7 @@
 		$text = "";
 
 		for ($i = 0; $i < 5; $i++) { 
-			$text .= rand(0,9);
+			$text .= rand(1,9);
 		}
 
 		return $text;
