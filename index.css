@@ -166,3 +166,32 @@ body {
     font-weight: bold;
     padding-left: 10px;
 }
+
+.sort-bar {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: ConfigCondensed;
+}
+
+.sort-indicator {
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    margin: 5px;
+}
+
+.sort-option {
+    margin: 5px;
+    border: 1px solid white;
+    border-radius: 15px;
+    color: white;
+    text-decoration: none;
+    padding: 5px 10px 5px 10px;
+}
+
+#sort-selected {
+    background-color: white;
+    color: var(--dark-color);
+}

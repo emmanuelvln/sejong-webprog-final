@@ -64,11 +64,49 @@
                 HTML;
             }
         ?>
-    </div> 
+    </div>
+        
+    <div class="sort-bar">
+        <div class="sort-indicator">Sort by:</div>
+        <?php
+            if (!isset($_GET['sorting'])) {
+                echo '<div id="sort-selected" class="sort-option">Recentness</div>';
+            } else {
+                echo '<a href="index.php" class="sort-option">Recentness</a>';
+            }
+
+            if (isset($_GET['sorting']) && $_GET['sorting'] == "old") {
+                echo '<div id="sort-selected" class="sort-option">Oldest</div>';
+            } else {
+                echo '<a href="index.php?sorting=old" class="sort-option">Oldest</a>';
+            }
+
+            if (isset($_GET['sorting']) && $_GET['sorting'] == "title") {
+                echo '<div id="sort-selected" class="sort-option">Title</div>';
+            } else {
+                echo '<a href="index.php?sorting=title" class="sort-option">Title</a>';
+            }
+
+            if (isset($_GET['sorting']) && $_GET['sorting'] == "location") {
+                echo '<div id="sort-selected" class="sort-option">Location</div>';
+            } else {
+                echo '<a href="index.php?sorting=location" class="sort-option">Location</a>';
+            }
+        ?>
+    </div>
 
     <div id="content">
         <?php 
-            $sql = "SELECT * FROM content ORDER BY id DESC";
+            if (!isset($_GET['sorting'])) {
+                $sql = "SELECT * FROM content ORDER BY id ASC";
+            } else if (isset($_GET['sorting']) == "old") {
+                $sql = "SELECT * FROM content ORDER BY id DESC";
+            } else if (isset($_GET['sorting']) == "title") {
+                $sql = "SELECT * FROM content ORDER BY title ASC";
+            } else if (isset($_GET['sorting']) == "location") {
+                $sql = "SELECT * FROM content ORDER BY location ASC";
+            }
+
             $res = mysqli_query($con,  $sql);
 
             if (mysqli_num_rows($res) > 0) {
