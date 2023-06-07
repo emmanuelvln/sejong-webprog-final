@@ -22,8 +22,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="index.css">
     <title>Korean journey - home</title>
-    <script>
-    </script>
 </head>
 <body onload="load()">
     <div id="header">Korean journey</div>

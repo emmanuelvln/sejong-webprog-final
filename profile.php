@@ -31,7 +31,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="profile.css">
-    <title>Korean journey - Profile</title>
+    <title>Korean journey - profile</title>
 </head>
 <body>
     <div id="header">Korean journey</div>
