@@ -5,12 +5,14 @@
     include("functions.php");
 
     if ($_SERVER['REQUEST_METHOD'] == "POST") {
+        $email = $_POST['email'];
 		$user = $_POST['user'];
 		$pass = $_POST['pass'];
 
 		if (!empty($user) && !empty($pass) && !is_numeric($user)) {
-			$user_id = random_num(5);
-			$query = "INSERT INTO users (user_id, user_name, password) VALUES ('$user_id', '$user', '$pass')";
+			$user_id = random_num();
+            $pass = password_hash($pass, PASSWORD_DEFAULT);
+			$query = "INSERT INTO users (user_id, user_name, password, email) VALUES ('$user_id', '$user', '$pass', '$email')";
 
 			mysqli_query($con, $query);
 
@@ -29,6 +31,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="signup.css">
     <title>Korean journey - signup</title>
+
+    <script>
+        function validateForm() {
+            var email = document.getElementById('email');
+            var user = document.getElementById('user');
+            var pass = document.getElementById('pass');
+            var isOk = true;
+
+            if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email.value))) {
+                email.style.border = "1px solid red";
+                isOk = false;
+            }
+            else {
+                email.style.border = "";
+            }
+
+            if (user.value == null || !isNaN(user.value)) {
+                user.style.border = "1px solid red";
+                isOk = false;
+            }
+            else {
+                user.style.border = "";
+            }
+            
+            if (pass.value == "") {
+                pass.style.border = "1px solid red";
+                isOk = false;
+            }
+            else {
+                pass.style.border = "";
+            }
+            
+            return isOk;
+        }
+    </script>
 </head>
 <body>
     <div id="header">Korean journey</div>
@@ -46,7 +83,7 @@
     </div> 
 
     <div id="page">
-        <form method="post">
+        <form onsubmit="return validateForm()" method="post">
             <?php
                 if (isset($_GET['error'])) {
                     echo '<p>';
@@ -54,11 +91,14 @@
                     echo '</p>';
                 }
             ?>
-            <p> Enter your username:</br>
-                <input type="text" name="user"/> 
+            <p>Enter your email address:</br>
+                <input id="email" type="text" name="email"/> 
+            </p>
+            <p>Enter your username:</br>
+                <input id="user" type="text" name="user"/> 
             </p>
             <p>Enter your password:</br>
-                <input type="password" name="pass"/> 
+                <input id="pass" type="password" name="pass"/> 
             </p>
             <p>
                 <input type="submit" name="submit" value="Submit"/> 

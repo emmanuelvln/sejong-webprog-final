@@ -17,16 +17,11 @@
 		die();
 	}
 
-	function random_num($length)
+	function random_num()
 	{
 		$text = "";
-		if($length < 5) {
-			$length = 5;
-		}
 
-		$len = rand(4,$length);
-
-		for ($i=0; $i < $len; $i++) { 
+		for ($i = 0; $i < 5; $i++) { 
 			$text .= rand(0,9);
 		}
 
