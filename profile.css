@@ -1,0 +1,187 @@
+@font-face {
+    font-family: Evogria;
+    src: url('fonts/Evogria.otf');
+}
+@font-face {
+    font-family: Sofia;
+    src: url('fonts/Sofia.otf');
+    font-display: swap;
+}
+@font-face {
+    font-family: Blanch;
+    src: url('fonts/Blanch.otf');
+    font-display: swap;
+}
+@font-face {
+    font-family: KaushanScript;
+    src: url('fonts/KaushanScript.otf');
+}
+@font-face {
+    font-family: ConfigCondensed;
+    src: url('fonts/ConfigCondensed.otf');
+}
+
+:root {
+    --light-color: #404040ff;
+    --dark-color: #262626ff;
+}
+
+*,*:focus,*:hover{
+    outline:none;
+}
+
+html {
+    scrollbar-width: thin;
+}
+
+body {
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-right: 0;
+    margin-left: 0;
+    background-color: var(--light-color);
+}
+
+/* HEADER */
+
+#header {
+    background-color: var(--dark-color);
+    font-family: Sofia;
+    color: white;
+    text-align: center;
+    padding-bottom: 7px;
+    font-size: 50px;
+}
+
+/* TOP AND BOTTOM RIBBONS */
+
+#top-ribbon {
+    position: relative;
+    text-align: center;
+    color: var(--light-color);
+    font-family: Sofia;
+    font-size: 22px;
+}
+
+.ribbon-img {
+    display: block;
+    margin-top: 35px;
+    margin-right: auto;
+    margin-left: auto;
+    height: 35px;
+}
+
+.ribbon-txt {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: Sofia;
+    color: var(--light-color);
+    text-decoration: none;
+}
+
+.nav-bar {
+    width: 100%;
+    margin-top: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-button {
+    display: flex;
+    align-items: center;
+    height: 35px;
+    width: 175px;
+    background-color: white;
+    border-radius: 20px;
+    text-decoration: none;
+    margin: 10px;
+}
+
+.nav-icon {
+    height: 35px;
+    padding-left: 15px;
+}
+
+.nav-text {
+    color: var(--light-color);
+    font-family: ConfigCondensed;
+    font-size: 25px;
+    font-weight: bold;
+    padding-left: 10px;
+}
+
+#content {
+    display: grid;
+
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 50px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 50px;
+
+    grid-gap: 30px 10px;
+
+    grid-template-columns: repeat(auto-fit, 248px);
+    grid-auto-rows: 302px;
+}
+
+.frame {
+    height: 215px;
+    width: 215px;
+    overflow: hidden;
+    position: relative;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.description {
+    width: 215px;
+    margin-right: auto;
+    margin-left: auto;
+    font-family: ConfigCondensed;
+    padding-left: 25px;
+    padding-top: 3px;
+}
+
+.title {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.title::first-letter, .sub-title::first-letter, .author::first-letter {
+    text-transform: capitalize;
+}
+
+.card {
+    height: 315px;
+    width: 250px;
+    background-color: white;
+    padding-top: 15px;
+}
+
+.image {
+    width: 215px;
+}
+
+.info {
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-family: ConfigCondensed;
+    font-size: 30px;
+    margin-top: 30px;
+}
+
+.submit-button {
+    border: none;
+    background-color: transparent;
+    padding: 0px;
+    color: red;
+    font-family: ConfigCondensed;
+    font-weight: bold;
+    cursor: pointer;
+}
