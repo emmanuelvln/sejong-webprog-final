@@ -38,7 +38,7 @@
 
     <div id="top-ribbon">
         <img class="ribbon-img" src="imgs/ribbon.png">
-        <span class="ribbon-txt">Welcome to your profile!</span>
+        <span class="ribbon-txt">Here is your profile!</span>
     </div>
 
     <div class="nav-bar">

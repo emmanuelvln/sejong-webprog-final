@@ -118,15 +118,13 @@ body {
 
     margin-left: auto;
     margin-right: auto;
-    padding-top: 50px;
     padding-left: 50px;
     padding-right: 50px;
     padding-bottom: 50px;
 
-    grid-gap: 30px 10px;
-
+    gap: 30px;
     grid-template-columns: repeat(auto-fit, 248px);
-    grid-auto-rows: 302px;
+    grid-auto-rows: 315px;
 }
 
 .frame {
@@ -168,12 +166,11 @@ body {
 }
 
 .info {
-    width: 100%;
     text-align: center;
     color: white;
     font-family: ConfigCondensed;
     font-size: 30px;
-    margin-top: 30px;
+    margin: 30px;
 }
 
 .submit-button {

@@ -141,6 +141,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .nav-button {
@@ -148,6 +149,7 @@ body {
     align-items: center;
     height: 35px;
     width: 175px;
+    min-width: 175px;
     background-color: white;
     border-radius: 20px;
     text-decoration: none;
