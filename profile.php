@@ -19,6 +19,7 @@
         $images = mysqli_fetch_assoc($res);
 
         $path = 'uploads/'.$images['url'];
+        unlink($path);
         
         header("Location: profile.php");
         die();

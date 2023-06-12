@@ -96,12 +96,12 @@
     <div id="content">
         <?php 
             if (!isset($_GET['sorting'])) {
-                $sql = "SELECT * FROM content ORDER BY id ASC";
-            } else if (isset($_GET['sorting']) == "old") {
                 $sql = "SELECT * FROM content ORDER BY id DESC";
-            } else if (isset($_GET['sorting']) == "title") {
+            } else if ($_GET['sorting'] == "old") {
+                $sql = "SELECT * FROM content ORDER BY id ASC";
+            } else if ($_GET['sorting'] == "title") {
                 $sql = "SELECT * FROM content ORDER BY title ASC";
-            } else if (isset($_GET['sorting']) == "location") {
+            } else if ($_GET['sorting'] == "location") {
                 $sql = "SELECT * FROM content ORDER BY location ASC";
             }
 
