@@ -6,7 +6,7 @@
 
 	$con = mysqli_connect($dbhost, $dbuser, $dbpass) or die ('Unable to connect. Check your connection parameters.');
 
-	$query = 'CREATE DATABASE IF NOT EXISTS $dbname';
+	$query = 'CREATE DATABASE IF NOT EXISTS korean_journey';
 
 	mysqli_query($con, $query) or die(mysqli_error($con));
 
